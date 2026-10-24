@@ -1,4 +1,7 @@
-let productionOrders = JSON.parse(localStorage.getItem('sandGravelOrders')) || [];
+if (window.location.hash === "#tv") {
+    isTVMode = true;
+    document.body.classList.add('tv-mode');
+}let productionOrders = JSON.parse(localStorage.getItem('sandGravelOrders')) || [];
 let currentAnnouncement = localStorage.getItem('sandGravelAnnounce') || "Salut ! N'oubliez pas, aujourd'hui c'est la production !";
 let isTVMode = false;
 
