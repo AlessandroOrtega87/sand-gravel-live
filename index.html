@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sand & Gravel - Suivi de Production</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        
+        <!-- Bouton Sand&Gravel pour basculer la vue Employés / Régie -->
+        <div class="top-bar">
+            <button id="btn-toggle-tv" class="btn-sandgravel" onclick="toggleTVMode()">Sand&Gravel</button>
+        </div>
+
+        <!-- ================= 1. BANNIÈRE PUBLIQUE (TV EMPLOYÉS) ================= -->
+        <header class="header">
+            <div class="header-top">
+                <img src="Sand&Gravel.jpg" alt="Sand & Gravel Logo" class="brand-logo">
+                <h1>SAND & GRAVEL - ROXWOOD SANDING COMPANY</h1>
+            </div>
+            
+            <!-- Consigne du jour -->
+            <div class="announcement-box-large">
+                <div class="announce-header">
+                    <span class="live-badge">🔴 DIRECT CONSIGNES</span>
+                </div>
+                <p id="announcement-text">Salut ! N'oubliez pas, aujourd'hui c'est la production !</p>
+                
+                <!-- Résumé des restes à faire par produit -->
+                <div class="live-goal-box">
+                    <div class="goal-info-title">RESTE À PRODUIRE AUJOURD'HUI :</div>
+                    <div id="goal-details-list" class="goal-details-list">
+                        <!-- Badges dynamiques par produit -->
+                    </div>
+                    <div class="progress-bar-large">
+                        <div id="goal-progress-fill" class="progress-fill-large"></div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- ================= 2. MODÉRATION & RÉGIE ================= -->
+        <section class="form-section admin-only">
+            <h2>⚙️ Modération & Ajout de Demande</h2>
+            
+            <!-- Message du jour -->
+            <div class="admin-message-control">
+                <label>Modifier la consigne générale :</label>
+                <div class="input-with-btn">
+                    <input type="text" id="admin-message-input" placeholder="Consigne du jour...">
+                    <button class="btn-update-msg" onclick="updateMessageFromInput()">📢 Mettre à jour</button>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <!-- Formulaire d'ajout de produit -->
+            <h3 class="sub-title">➕ Lancer une production de produit</h3>
+            <form id="prod-form">
+                <div class="input-group">
+                    <label for="item-select">Choisir le Produit</label>
+                    <select id="item-select" required>
+                        <option value="Panneaux de verre">🪟 Panneaux de verre</option>
+                        <option value="Silice">🧪 Silice</option>
+                        <option value="Quartz">💎 Quartz</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="target-qty">Quantité demandée</label>
+                    <input type="number" id="target-qty" placeholder="Ex: 3000" min="1" required>
+                </div>
+                <div class="input-group">
+                    <label for="client-name">Demandeur / Client</label>
+                    <input type="text" id="client-name" placeholder="Ex: Interne / BTP">
+                </div>
+                <button type="submit" class="btn-add">Ajouter au live</button>
+            </form>
+        </section>
+
+        <!-- ================= 3. CARTES DÉTAILLÉES PAR PRODUIT ================= -->
+        <section class="orders-section">
+            <h2 class="admin-only">📋 Objectifs par Produit</h2>
+            <div id="orders-grid" class="orders-grid">
+                <!-- Cartes des produits -->
+            </div>
+        </section>
+
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
